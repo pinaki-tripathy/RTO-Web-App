@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTO Center</title>
+    <style>
+        body {
+            background: url(https://thumbs.dreamstime.com/z/recovery-time-objective-concept-interface-world-map-blue-background-40132114.jpg?w=992) no-repeat fixed;
+            background-size: cover;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #e1cfcf;
+        }
+
+        h1 {
+            color: #e1d8d8; 
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 3em; 
+            text-transform: uppercase; 
+        }
+
+        h2{
+            color: rgb(6, 0, 0);
+        }
+
+        p {
+            color: #8a2be2;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 2px solid #0080ff;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0080ff;
+            color: #dbcece;
+        }
+
+        td {
+            background-color: #d5c7c7;
+            color: #0b0b0b;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #0f0000;
+            padding: 15px;
+            border: 2px solid #0080ff;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d3bfbf;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #d4c9c9;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0080ff;
+            color: #f0e6e6;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        .divider {
+            height: 2px;
+            background-color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+<img src="{% static 'th1.jpg' %}" alt="My image">
+
+    <h1>RTO Center</h1>
+    <div class="divider"></div>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="ename">Name</label>
+        <input type="text" placeholder="Enter your name" name="ename" required>
+
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter your email" name="email" required>
+
+        <label for="address">Address</label>
+        <textarea placeholder="Enter your address" name="address" required></textarea>
+
+        <label for="phno">Phone Number</label>
+        <input type="tel" placeholder="Enter your phone number" name="phno" required>
+
+        <button type="submit">Submit</button>
+        <button><a href="/login">back</a></button>
+        <button><a href="logout">logout</a></button>
+    </form>
+    {{del}}
+     
+    <h2>Registered Person</h2>
+    <div class="divider"></div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Emp ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        {% for y in emp %}
+        <tbody>
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ y.ename }}</td>
+                <td>{{ y.email }}</td>
+                <td>{{ y.address }}</td>
+                <td>{{ y.phno }}</td>
+                <td><a href="/delete/{{y.id}}"><button>Delete</button></a></td>
+                <td><a href="/update/{{y.id}}"><button>Update</button></a></td> 
+            </tr>
+        {% endfor %} 
+        </tbody>
+    </table>
+</body>
+</html>

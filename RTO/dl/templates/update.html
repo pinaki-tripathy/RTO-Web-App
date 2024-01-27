@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Page</title>
+    <style>
+        body {
+            background: url(https://thumbs.dreamstime.com/z/recovery-time-objective-concept-interface-world-map-blue-background-40132114.jpg?w=992) no-repeat fixed;
+            background-size: cover;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #0b0b0b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: brown;
+            margin-bottom: 10px;
+            background-color: #030303; 
+            padding: 10px;
+        }
+
+        p {
+            color: blueviolet;
+            margin: 10px 0;
+        }
+
+        h2 {
+            color: brown;
+            margin-top: 20px;
+        }
+
+        div.line {
+            height: 2px;
+            background-color: red;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70%;
+            max-width: 400px;
+            padding: 20px;
+            border: 2px solid slategrey;
+            border-radius: 10px;
+            background-color: rgb(11, 10, 10);
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #f6e8e8;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #040404;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <img src="{% static 'th1.jpg' %}" alt="My image">
+
+    <h1>Update your Details</h1>
+    <div class="line"></div>
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="ename">Name</label>
+            <input type="text" name="ename" id="ename" value="{{del.ename}}">
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" value="{{del.email}}">
+        </div>
+
+        <div>
+            <label for="address">Address</label>
+            <textarea name="address" id="address">{{del.address}}</textarea>
+        </div>
+
+        <div>
+            <label for="phno">Phone Number</label>
+            <input type="number" name="phno" id="phno" value="{{del.phno}}">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
